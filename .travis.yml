@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - '6'
+  - '4'
+branches:
+only:
+  - master
+script:
+  - npm run lint
+  - npm t
