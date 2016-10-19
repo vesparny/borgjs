@@ -1,5 +1,9 @@
-# borgjs
-
+# 📦 borgjs
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![Travis](https://img.shields.io/travis/vesparny/borgjs.svg)](https://travis-ci.org/vesparny/borgjs)
+[![npm](https://img.shields.io/npm/dm/borgjs.svg)](https://npm-stat.com/charts.html?package=borgjs&from=2016-10-17)
+[![npm](https://img.shields.io/npm/v/borgjs.svg)](https://www.npmjs.com/package/borgjs)
+[![David](https://img.shields.io/david/vesparny/borgjs.svg)](https://david-dm.org/vesparny/borgjs)
 
 ## configuration
 ```js
@@ -58,12 +62,13 @@ module.exports = {
   // },
 
   // Email sender configuration
+  // See https://github.com/nodemailer/nodemailer options
   //  email: {
-  //    from: 'alessandro@arnodo.net',
-  //    to: 'alessandro@arnodo.net',
+  //    from: 'me@site.net',
+  //    to: 'you@site.net',
   //    smtpHost: 'smtp.mailgun.org',
   //    smtpPort: 587,
-  //    user: 'postmaster@arnodo.mailgun.org',
+  //    user: 'postmaster@lalala.mailgun.org',
   //    pass: 'mypass',
   //    secure: false
   //  },
