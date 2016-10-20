@@ -30,6 +30,35 @@ Also the console output looks pretty good.
 
 <img width="849" alt="screen shot 2016-10-20 at 9 02 33 pm" src="https://cloud.githubusercontent.com/assets/82070/19576118/19704f5e-9712-11e6-9403-c4e19d1979d4.png">
 
+## Usage
+
+Install borgjs globally
+
+```shell
+npm i -g borgjs
+```
+
+Running a backup is as easy as creating a [borg repository](http://borgbackup.readthedocs.io/en/stable/usage.html#borg-init) and run
+
+```shell
+borgjs --config=/User/me/borgjs.config.js
+```
+
+```bash
+borgjs --help
+
+  📦  A tiny wrapper for BorgBackup to automate your backup workflow
+
+  Usage
+    $ borgjs <options>
+
+  Options
+    -c, --config          path of a borgjs config file.
+
+  Examples
+    borgjs --config=/User/me/borgjs.config.js
+```
+
 ## Features
 
 * backup creation
@@ -145,27 +174,6 @@ module.exports = {
   //  accessToken: 'your pushbullet access token'
   // }
 }
-```
-
-## CLI Usage
-
-Running a backup is as easy as creating a [borg repository](http://borgbackup.readthedocs.io/en/stable/usage.html#borg-init) and run
-
-`$ borgjs --config=/User/me/borgjs.config.js`
-
-```bash
-$ borgjs --help
-
-  📦  A tiny wrapper for BorgBackup to automate your backup workflow
-
-  Usage
-    $ borgjs <options>
-
-  Options
-    -c, --config          path of a borgjs config file.
-
-  Examples
-    borgjs --config=/User/me/borgjs.config.js
 ```
 
 ## Automate
