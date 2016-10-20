@@ -35,7 +35,7 @@ module.exports = {
   // ],
 
   // A prefix for backup archives
-  //  archivePrefix: 'backup',
+  // archivePrefix: 'backup',
 
   // Type of compression to use when creating archives. See
   // https://borgbackup.readthedocs.org/en/stable/usage.html#borg-create
@@ -79,7 +79,13 @@ module.exports = {
   // Send an email on error (the 'email' section must be configured)
   sendErrorMail: true,
 
-  // send native Desktop notifications on success/error
+  // Send native Desktop notifications on success/error
   sendSystemNotification: true
+
+  // Send a push notifications on success/error to your devices connected to pushbullet
+  // See https://www.pushbullet.com/
+  // pushbullet: {
+  //  accessToken: 'your pushbullet access token'
+  // }
 }
 ```
