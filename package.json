@@ -1,7 +1,7 @@
 {
   "name": "borgjs",
   "version": "1.0.0",
-  "description": "📦  A tiny wrapper for borg backup to automate your backup workflow",
+  "description": "📦  A tiny wrapper for BorgBackup to automate your backup workflow",
   "main": "lib",
   "engines": {
     "node": ">=4"
