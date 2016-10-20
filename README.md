@@ -49,15 +49,15 @@ This enables you to always keep an eye on your backups.
 Notifications will never contain sensitive informations such as encryption keys of files involved in the backup process.
 They will just contain the path of the generated log file and the status (success/error).
 
-* ###### OS native notifications
+* **OS native notifications**
 
 <img width="374" alt="screen shot 2016-10-20 at 8 57 05 pm" src="https://cloud.githubusercontent.com/assets/82070/19576219/6f625b32-9712-11e6-8e55-50c25ff901a0.png">
 
-* ###### push notifications (via pushbullet)
+* **push notifications (via pushbullet)**
 
 ![optimized-img_2862](https://cloud.githubusercontent.com/assets/82070/19576378/0fb0c966-9713-11e6-8489-1f7ba70df740.PNG)
 
-* ###### email notifications
+* **email notifications**
 
 <img style="border:black" width="672" alt="screen shot 2016-10-20 at 10 23 27 pm" src="https://cloud.githubusercontent.com/assets/82070/19576624/e6f0c2dc-9713-11e6-9fd6-117b3c165df2.png">
 
