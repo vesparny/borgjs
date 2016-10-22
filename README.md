@@ -32,6 +32,14 @@ Also the console output looks pretty good.
 
 ## Usage
 
+In order to use borgjs, you need to configure borg before.
+This is an easy step, just follow the [installation](http://borgbackup.readthedocs.io/en/stable/installation.html) guide on the borg website.
+
+Initialize an empty borg repository (for more details see the borg [quickstart](http://borgbackup.readthedocs.io/en/stable/quickstart.html) guide)
+
+```shell
+borg init /path/to/repo
+```
 Install borgjs globally
 
 ```shell
@@ -88,7 +96,7 @@ They will just contain the path of the generated log file and the status (succes
 
 * **email notifications**
 
-<img style="border:black" width="672" alt="screen shot 2016-10-20 at 10 23 27 pm" src="https://cloud.githubusercontent.com/assets/82070/19576624/e6f0c2dc-9713-11e6-9fd6-117b3c165df2.png">
+<img  width="672" alt="screen shot 2016-10-20 at 10 23 27 pm" src="https://cloud.githubusercontent.com/assets/82070/19576624/e6f0c2dc-9713-11e6-9fd6-117b3c165df2.png">
 
 ## Configuration
 ```js
@@ -192,7 +200,7 @@ I also run it on a headless Raspberry Pi.
 * Borg can store data on any remote host accessible over SSH. If you prefer to store your offsite backup in some other fancy cloud storage, you can always backup to a local target, then upload it anywhere using [rclone](http://rclone.org/)
 
 * I personally use [rsync.net](http://rsync.net/) for my backup, they also apply [dirty cheap](http://www.rsync.net/products/attic.html) pricing model to borg users.
-Please not I'm not affiliated with them, I'm just an happy paying customer.
+Please note I'm not affiliated with them, I'm just an happy paying customer.
 
 ## Change Log
 
