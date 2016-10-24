@@ -211,7 +211,7 @@ A backup is not a backup if it's not automated.
 
 I personally use [cronnix](https://www.macupdate.com/app/mac/7486/cronnix) to schedule my backup sessions on my mac.
 
-<img src="https://cloud.githubusercontent.com/assets/82070/19659113/f1dbd96a-9a2a-11e6-9db6-9eb6f32b0fdb.png">
+<img src="https://cloud.githubusercontent.com/assets/82070/19662868/be07d350-9a39-11e6-88a8-697627d30453.png">
 
 ## Recipes
 
