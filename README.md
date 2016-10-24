@@ -59,7 +59,7 @@ $ borgjs -c /User/me/borgjs.config.js
 ```
 or
 ```
-$ borgjs $(date +%Y-%m-%d-%H%M%S) -c /User/me/borgjs.config.js >> $(date +%Y-%m-%d-%H%M%S).log
+$ borgjs $(date +%Y-%m-%d-%H%M%S) -c /User/me/borgjs.config.js >> /Users/me/logs/$(date +%Y-%m-%d-%H%M%S).log
 ```
 in case you want to specify the archive name and log to a file (useful if you run in as a cronjob).
 
