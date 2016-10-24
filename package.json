@@ -1,6 +1,6 @@
 {
   "name": "borgjs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "📦  A tiny wrapper for BorgBackup to automate your backup workflow",
   "main": "dist",
   "engines": {
@@ -17,7 +17,7 @@
   "scripts": {
     "commit": "git-cz",
     "clean": "rimraf dist && mkdir dist",
-    "prepublish": "npm run lint && npm run test",
+    "prepublish": "npm run lint && npm run test && npm run build",
     "build": "npm run clean && babel lib -d dist",
     "test": "tape  -r babel-register test/**/*spec.js | tap-spec",
     "lint": "standard",
