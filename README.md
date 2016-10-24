@@ -24,79 +24,97 @@ Backups should be as boring as possible, that's why I've created this tool in or
 
 Instead of writing complex bash scripts you can now just write a [declarative configuration file](#configuration), run borgjs in a crontab and forget about it.
 
-It will take care of your backup workflow, sending you reports and writing detailed log files.
+It will take care of your backup workflow, sending you status reports through different possible channels.
 
-Also the console output looks pretty good.
+## Features
 
-<img width="849" alt="screen shot 2016-10-20 at 9 02 33 pm" src="https://cloud.githubusercontent.com/assets/82070/19576118/19704f5e-9712-11e6-9403-c4e19d1979d4.png">
+* backup creation
+* prune old backup according to a set of rules declared in the [configuration file](#configuration).
+* check backups for consistency and integrity.
+* send success/failure reports via email, push notifications on your phone or native OS notifications.
+* lockfile system to prevent concurrent backup process running in the same destination.
+* output borg messages to stdout for easy logging.
+* highly [configurable](#configuration).
 
-## Usage
+## Usage CLI
 
 In order to use borgjs, you need to configure borg before.
 This is an easy step, just follow the [installation](http://borgbackup.readthedocs.io/en/stable/installation.html) guide on the borg website.
 
 Initialize an empty borg repository (for more details see the borg [quickstart](http://borgbackup.readthedocs.io/en/stable/quickstart.html) guide)
 
-```shell
-borg init /path/to/repo
+```
+$ borg init /path/to/repo
 ```
 Install borgjs globally
 
-```shell
-npm i -g borgjs
+```
+$ npm i -g borgjs
 ```
 
 Running a backup is as easy as creating a [borg repository](http://borgbackup.readthedocs.io/en/stable/usage.html#borg-init) and run
 
-```shell
-borgjs --config=/User/me/borgjs.config.js
+```
+$ borgjs --config=/User/me/borgjs.config.js
 ```
 
-```bash
-borgjs --help
+```
+$ borgjs --help
 
-  📦  A tiny wrapper for BorgBackup to automate your backup workflow
+  A tiny wrapper for BorgBackup to automate your backup workflow
 
   Usage
-    $ borgjs <options>
+  $ borgjs <archive><options>
 
-  Options
-    -c, --config          path of a borgjs config file.
+Options
+  -c, --config         config file path
 
-  Examples
-    borgjs --config=/User/me/borgjs.config.js
+Examples
+  # run borgjs
+  $ borgjs -c=/User/me/borgjs.config.js
+
+  #run borgjs specifying the archive name, and log output to a file
+  $ borgjs $(date +%Y-%m-%d-%H%M%S) -c /path/to/your/borgjs.config.js >> $(date +%Y-%m-%d-%H%M%S).log
 ```
 
-## Features
+## Usage API
 
-* backup creation
-* prune old backup according to a set of rules declared in the [configuration file](#configuration).
-* check backups for consistency and integrity
-* send success/failure reports via email, push notifications on your phone or native OS notifications
-* lockfile system based on PID in order to avoid concurrent backups to the same destination
-* logs to a different file details about the backup session such as borg output and commands executed
-* highly [configurable](#configuration)
+```js
+const borgjs = require('borgjs')
+const config = {
+  repository: '/Users/arny/Desktop/test/',
+  paths: [
+    '/Volumes/External/'
+  ]
+}
+const archiveName = new Date().toString()
+
+borgjs(config, archiveName)
+.then(() => console.log('success'))
+.catch((err) => console.log('error', err))
+```
 
 ## Notifications
 
-borgjs supports a wide range of notifications, besides detailed logs creation.
+borgjs supports a wide range of notifications.
 
 This enables you to always keep an eye on your backups.
 
 Notifications will never contain sensitive informations such as encryption keys of files involved in the backup process.
-They will just contain the path of the generated log file and the status (success/error).
 
 * **OS native notifications**
 
-<img width="374" alt="screen shot 2016-10-20 at 8 57 05 pm" src="https://cloud.githubusercontent.com/assets/82070/19576219/6f625b32-9712-11e6-8e55-50c25ff901a0.png">
+![screen shot 2016-10-24 at 17 50 29](https://cloud.githubusercontent.com/assets/82070/19654341/256e3f7e-9a18-11e6-8453-6c11dafddb0b.png)
+
 
 * **push notifications (via pushbullet)**
 
-![optimized-img_2862](https://cloud.githubusercontent.com/assets/82070/19576378/0fb0c966-9713-11e6-8489-1f7ba70df740.PNG)
+![img_2890](https://cloud.githubusercontent.com/assets/82070/19654365/366c6378-9a18-11e6-81cc-ef4271f71e2b.jpg)
 
 * **email notifications**
 
-<img  width="672" alt="screen shot 2016-10-20 at 10 23 27 pm" src="https://cloud.githubusercontent.com/assets/82070/19576624/e6f0c2dc-9713-11e6-9fd6-117b3c165df2.png">
+![screen shot 2016-10-24 at 18 33 35](https://cloud.githubusercontent.com/assets/82070/19654415/6fa3d32e-9a18-11e6-92c0-a32feaa0e0de.png)
+
 
 ## Configuration
 ```js
@@ -117,10 +135,6 @@ module.exports = {
     //  '/Users/me',
     //  '/etc
   ],
-
-  // The logs dir absolute path
-  // defaults to ~/.borgjs/logs
-  // logsDir: '',
 
   // An array of files/directories to exclude from backup
   // exclude: [
@@ -190,10 +204,7 @@ A backup is not a backup if it's not automated.
 
 I personally use [cronnix](https://www.macupdate.com/app/mac/7486/cronnix) to schedule my backup sessions on my mac.
 
-I also run it on a headless Raspberry Pi.
-
-
-<img width="791" alt="screen shot 2016-10-20 at 10 37 01 pm" src="https://cloud.githubusercontent.com/assets/82070/19577018/c5161548-9715-11e6-974d-f465b7cc60e3.png">
+<img src="https://cloud.githubusercontent.com/assets/82070/19659113/f1dbd96a-9a2a-11e6-9db6-9eb6f32b0fdb.png">
 
 ## Recipes
 
