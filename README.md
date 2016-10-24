@@ -54,9 +54,14 @@ $ npm i -g borgjs
 
 Running a backup is as easy as creating a [borg repository](http://borgbackup.readthedocs.io/en/stable/usage.html#borg-init) and run
 
+```shell
+$ borgjs -c /User/me/borgjs.config.js
 ```
-$ borgjs --config=/User/me/borgjs.config.js
+or
 ```
+$ borgjs $(date +%Y-%m-%d-%H%M%S) -c /User/me/borgjs.config.js >> $(date +%Y-%m-%d-%H%M%S).log
+```
+in case you want to specify the archive name and log to a file (useful if you run in as a cronjob).
 
 ```
 $ borgjs --help
@@ -78,6 +83,8 @@ Examples
 ```
 
 ## Usage API
+
+You can also use borgjs programmatically:
 
 ```js
 const borgjs = require('borgjs')
