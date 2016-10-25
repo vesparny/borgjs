@@ -1,3 +1,13 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/vesparny/borgjs/compare/1.1.3...v1.2.0) (2016-10-25)
+
+
+### Features
+
+* **lib:** Log verbose output for check command ([353d606](https://github.com/vesparny/borgjs/commit/353d606))
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/vesparny/borgjs/compare/1.1.2...v1.1.3) (2016-10-25)
 
