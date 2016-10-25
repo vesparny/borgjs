@@ -1,3 +1,13 @@
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/vesparny/borgjs/compare/1.1.2...v1.1.3) (2016-10-25)
+
+
+### Bug Fixes
+
+* **lib:** Fix prune command ([d97129f](https://github.com/vesparny/borgjs/commit/d97129f))
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/vesparny/borgjs/compare/1.1.1...v1.1.2) (2016-10-24)
 
