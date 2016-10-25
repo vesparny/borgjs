@@ -1,3 +1,13 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/vesparny/borgjs/compare/1.2.0...v1.2.1) (2016-10-25)
+
+
+### Reverts
+
+* **lib:** Revert back the creation of tmp folder for filelock ([595a4b9](https://github.com/vesparny/borgjs/commit/595a4b9))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/vesparny/borgjs/compare/1.1.3...v1.2.0) (2016-10-25)
 
