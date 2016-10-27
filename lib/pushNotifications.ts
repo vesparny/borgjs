@@ -1,10 +1,43 @@
-const request = require('request')
-const parallel = require('run-parallel')
-const chalk = require('chalk')
+import request = require('request')
+import parallel = require('run-parallel')
+import chalk = require('chalk')
 
 const baseUri = 'https://api.pushbullet.com/v2'
 
-module.exports = function (config) {
+export default function (config) {
+
+    interface DoRequest {
+    method: string,
+    uri: string,
+    data?: any
+  }
+
+  function doRequest (options: DoRequest, cb) {
+    request({
+      method: options.method,
+      uri: baseUri + options.uri,
+      formData: options.data,
+      headers: {
+        'Access-Token': config.accessToken
+      }
+    }, cb)
+  }
+
+  function getDevices (cb) {
+    doRequest({
+      method: 'GET',
+      uri: '/devices'
+    }, cb)
+  }
+
+  function sendPush (data, cb) {
+    doRequest({
+      method: 'POST',
+      uri: '/pushes',
+      data: data
+    }, cb)
+  }
+
   return function sendPushNotification ({subject, message}, cb) {
     getDevices((err, res, body) => {
       if (err || res.statusCode !== 200) {
@@ -28,31 +61,5 @@ module.exports = function (config) {
         })
       parallel(notifications, cb)
     })
-  }
-
-  function doRequest ({method, uri, data}, cb) {
-    request({
-      method: method,
-      uri: baseUri + uri,
-      formData: data,
-      headers: {
-        'Access-Token': config.accessToken
-      }
-    }, cb)
-  }
-
-  function getDevices (cb) {
-    doRequest({
-      method: 'GET',
-      uri: '/devices'
-    }, cb)
-  }
-
-  function sendPush (data, cb) {
-    doRequest({
-      method: 'POST',
-      uri: '/pushes',
-      data: data
-    }, cb)
   }
 }

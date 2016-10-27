@@ -1,7 +1,7 @@
-const nodemailer = require('nodemailer')
-const chalk = require('chalk')
+import nodemailer = require('nodemailer')
+import chalk = require('chalk')
 
-module.exports = function setupMailer (config) {
+export default function setupMailer (config) {
   return function sendEmailMessage ({subject, body}, cb) {
     var transporter = nodemailer.createTransport({
       port: config.smtpPort,

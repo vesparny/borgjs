@@ -1,19 +1,20 @@
-const parallel = require('run-parallel')
-const dateFormat = require('dateformat')
+import parallel = require('run-parallel')
+import dateFormat = require('dateformat')
 
-function run (config, archiveName) {
+export default function run (config, archiveName: string) {
   if (!config) {
     return Promise.reject(new Error('A valid configuration object must be passed in.'))
   }
+
   const sendNativeNotification = require('./nativeNotifications')
 
   if (config.passphrase) {
     process.env.BORG_PASSPHRASE = config.passphrase
   }
   config.archiveName = archiveName || dateFormat(new Date(), 'yyyy-mm-dd-HHMMss')
-  const commands = require('./commands')(config)
-  const sendMailNotification = require('./mailer')(config.email)
-  const sendPushNotifications = require('./pushNotifications')(config.pushbullet)
+  const commands = require('./commands').default(config)
+  const sendMailNotification = require('./mailer').default(config.email)
+  const sendPushNotifications = require('./pushNotifications').default(config.pushbullet)
 
   return commands
     .create()
@@ -54,5 +55,3 @@ function run (config, archiveName) {
       })
     })
 }
-
-module.exports = run
