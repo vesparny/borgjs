@@ -1,17 +1,19 @@
-const meow = require('meow')
-const updateNotifier = require('update-notifier')
-const fs = require('fs')
-const semver = require('semver')
-const path = require('path')
-const chalk = require('chalk')
-const osTmpdir = require('os-tmpdir')
-const lockfile = require('proper-lockfile')
-const filenamify = require('filenamify')
+var meow = require('meow')
+var updateNotifier = require('update-notifier')
+var fs = require('fs')
+var semver = require('semver')
+var path = require('path')
+var chalk = require('chalk')
+var osTmpdir = require('os-tmpdir')
+var lockfile = require('proper-lockfile')
+var filenamify = require('filenamify')
 
-const pkg = require('../package.json')
-const run = require('./')
+var pkg = require('../package.json')
 
-const notifier = updateNotifier({pkg})
+import run from './'
+
+var notifier = updateNotifier({pkg})
+
 if (notifier.update) {
   notifier.notify()
   console.log(`

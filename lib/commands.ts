@@ -1,9 +1,11 @@
-const execa = require('execa')
-const fs = require('fs')
-const chalk = require('chalk')
-const utils = require('./utils')
+import execa = require('execa')
+import fs = require('fs')
+import chalk = require('chalk')
 
-module.exports = function setupCommands (config) {
+import utils = require('./utils')
+
+export default function setupCommands (config) {
+
   function runCommandAndWriteToFile (cmd, name) {
     utils.log(`${chalk.yellow('Executing command:')}
 borg ${name}`)
