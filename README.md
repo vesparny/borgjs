@@ -162,7 +162,7 @@ module.exports = {
      '--compression', 'lz4',
      '--filter', 'AME?'
     ]
-  }
+  },
   // Check repo consistency
   // Use the options array to pass any options supported by borg check
   // See https://borgbackup.readthedocs.org/en/stable/usage.html#borg-check
