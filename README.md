@@ -35,6 +35,7 @@ It will take care of your backup workflow, sending you status reports through di
 * lockfile system to prevent concurrent backup process running in the same destination.
 * output borg messages to stdout for easy logging.
 * highly [configurable](#configuration).
+* allow to fully customize borg commands and environment variables.
 
 ## Usage CLI
 
@@ -174,9 +175,9 @@ module.exports = {
   // https://borgbackup.readthedocs.org/en/stable/usage.html#borg-prune for details.
  //  prune: {
  //   options: [
- //     '-d', 30,
+ //    '-d', 30,
  //    '-w', 30,
- //     '--keep-within', '31d'
+ //    '--keep-within', '31d'
  //   ]
  // }
 
