@@ -1,3 +1,15 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/vesparny/borgjs/compare/1.2.1...v2.0.0) (2016-11-09)
+
+
+### Features
+
+* **lib:** Add support for arbitrary borg options ([c1757f8](https://github.com/vesparny/borgjs/commit/c1757f8))
+* **lib:** Allow to set any environment variable via config ([89d0f5c](https://github.com/vesparny/borgjs/commit/89d0f5c))
+* **lib:** Improve filelock handling by exiting the process if a lockfile exists and it's in use ([8d8f5a5](https://github.com/vesparny/borgjs/commit/8d8f5a5))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/vesparny/borgjs/compare/1.2.0...v1.2.1) (2016-10-25)
 
