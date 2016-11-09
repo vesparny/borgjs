@@ -124,6 +124,7 @@ Notifications will never contain sensitive informations such as encryption keys 
 
 
 ## Configuration
+
 ```js
 module.exports = {
   // Specify an alternative absolute path for the borg executable
@@ -150,31 +151,41 @@ module.exports = {
   // ],
 
   // A prefix for backup archives
-  // archivePrefix: 'backup',
+  // archivePrefix: 'backup-',
 
-  // Type of compression to use when creating archives.
+  // Create backup archive
+  // Use the options array to pass any options supported by borg create
   // See https://borgbackup.readthedocs.org/en/stable/usage.html#borg-create
-  // lz4, zlib, lzma
-  compression: '',
-
-  // The encryption passphrase that will be used to set BORG_PASSPHRASE env variable
-  // necessary to run automated backups with borg if your repository has been created with encryption
-  //  passphrase: '',
-
+  create: {
+    options: [
+     '--compression', 'lz4',
+     '--filter', 'AME?'
+    ]
+  }
   // Check repo consistency
+  // Use the options array to pass any options supported by borg check
   // See https://borgbackup.readthedocs.org/en/stable/usage.html#borg-check
-  check: true,
+  // check: {
+  //  options: []
+  // },
 
   // Retention policy for pruning old backups
+  // Use the options array to pass any options supported by borg prune
   // https://borgbackup.readthedocs.org/en/stable/usage.html#borg-prune for details.
-  // prune: {
-  //    H: 10,
-  //    d: 7,
-  //    w: 4,
-  //    m: 6,
-  //    y: 1,
-  //    'keep-within': '31d'
-  // },
+ //  prune: {
+ //   options: [
+ //     '-d', 30,
+ //    '-w', 30,
+ //     '--keep-within', '31d'
+ //   ]
+ // }
+
+  // Set the following environment variables
+  // See https://borgbackup.readthedocs.io/en/stable/usage.html#environment-variables
+  env: {
+    BORG_REMOTE_PATH: 'borg1',
+    BORG_PASSPHRASE: 'passphrase'
+  },
 
   // Email configuration
   // See https://github.com/nodemailer/nodemailer options
@@ -189,6 +200,7 @@ module.exports = {
   //  },
 
   // Send an email on success (the 'email' section must be configured)
+
   // sendSuccessMail: true,
 
   // Send an email on error (the 'email' section must be configured)
