@@ -230,7 +230,7 @@ I personally use [cronnix](https://www.macupdate.com/app/mac/7486/cronnix) to sc
 
 * Borg can store data on any remote host accessible over SSH. If you prefer to store your offsite backup in some other fancy cloud storage, you can always backup to a local target, then upload it anywhere using [rclone](http://rclone.org/)
 
-* I personally use [rsync.net](http://rsync.net/) for my backup, they also apply [dirty cheap](http://www.rsync.net/products/attic.html) pricing model to borg users.
+* I personally use [rsync.net](http://rsync.net/) for my backup, they also apply [dirt cheap](http://www.rsync.net/products/attic.html) pricing model to borg users.
 Please note I'm not affiliated with them, I'm just an happy paying customer.
 
 ## Change Log
