@@ -1,3 +1,13 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/vesparny/borgjs/compare/2.0.0...v2.0.1) (2016-11-24)
+
+
+### Bug Fixes
+
+* **lib:** Check that config file exists ([b17ca4c](https://github.com/vesparny/borgjs/commit/b17ca4c))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/vesparny/borgjs/compare/1.2.1...v2.0.0) (2016-11-09)
 
