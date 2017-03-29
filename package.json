@@ -4,7 +4,7 @@
   "description": "📦  A tiny wrapper for BorgBackup to automate your backup workflow",
   "main": "dist",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "bin": {
     "borgjs": "bin/index.js"
