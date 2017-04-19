@@ -13,12 +13,18 @@
 
 ## Overview
 
-**Please note borgjs needs you to run node >=4 and has been tested using borg v1.0.7**
+**Please note borgjs needs you to run node >=6 and has been tested using borg**
+
+* v1.0.7
+* v1.0.8
+* v1.0.9
+* v1.0.10
 
 borgjs is a nodejs command line tool for [BorgBackup](http://borgbackup.readthedocs.io/en/stable/).
 
-After having tried a lot of backup solutions for my data, I've been using Borg for quite a while. It's rock solid and never let me down.
-It supports compression and authenticated encryption.
+After having tried a lot of backup solutions for my data, I've been using Borg for quite a while.
+It's rock solid and never let me down.
+It supports compression, de-duplication and encryption.
 
 Backups should be as boring as possible, that's why I've created this tool in order to automate and constantly monitor the whole process, making it a little bit more user friendly.
 
@@ -31,7 +37,7 @@ It will take care of your backup workflow, sending you status reports through di
 * backup creation
 * prune old backup according to a set of rules declared in the [configuration file](#configuration).
 * check backups for consistency and integrity.
-* send success/failure reports via email, push notifications on your phone or native OS notifications.
+* `onFinish` hook to do anything you want after finishing a backup.
 * lockfile system to prevent concurrent backup process running in the same destination.
 * output borg messages to stdout for easy logging.
 * highly [configurable](#configuration).
@@ -102,27 +108,26 @@ borgjs(config, archiveName)
 .catch((err) => console.log('error', err))
 ```
 
-## Notifications
+## `onFinish` hook
 
-borgjs supports a wide range of notifications.
+By defining an `onFinish` callback function in the configuration file, it's possible to run any arbitrary code when a backup finishes.
 
-This enables you to always keep an eye on your backups.
+```js
+// the config file
+module.exports = {
+  onFinish: function (err, data, done) {
+    if (err) {
+      console.log('An error happened', err)
+    } else {
+      console.log(`Archive ${data.archiveName} created.`)
+    }
+    // invoke the done callback to let the process terminate properly
+    done()
+  }
+}
+```
 
-Notifications will never contain sensitive informations such as encryption keys of files involved in the backup process.
-
-* **OS native notifications**
-
-![screen shot 2016-10-24 at 17 50 29](https://cloud.githubusercontent.com/assets/82070/19654341/256e3f7e-9a18-11e6-8453-6c11dafddb0b.png)
-
-
-* **push notifications (via pushbullet)**
-
-![img_2890](https://cloud.githubusercontent.com/assets/82070/19654365/366c6378-9a18-11e6-81cc-ef4271f71e2b.jpg)
-
-* **email notifications**
-
-![screen shot 2016-10-24 at 18 33 35](https://cloud.githubusercontent.com/assets/82070/19654415/6fa3d32e-9a18-11e6-92c0-a32feaa0e0de.png)
-
+It's possible to use the `onFinish` callback to send emails or notifications about the executed backup (see the paragraph below for an example)
 
 ## Configuration
 
@@ -187,34 +192,27 @@ module.exports = {
     BORG_REMOTE_PATH: 'borg1',
     BORG_PASSPHRASE: 'passphrase'
   },
+  // the onFinish callback
+  onFinish: function (err, data, done) {
+    const message = err
+      ? 'the backup failed'
+      : `the archive ${data.archiveName} has been created`
+    var execSync = require('child_process').execSync
 
-  // Email configuration
-  // See https://github.com/nodemailer/nodemailer options
-  //  email: {
-  //    from: 'me@site.net',
-  //    to: 'you@site.net',
-  //    smtpHost: 'smtp.mailgun.org',
-  //    smtpPort: 587,
-  //    user: 'postmaster@lalala.mailgun.org',
-  //    pass: 'mypass',
-  //    secure: false
-  //  },
-
-  // Send an email on success (the 'email' section must be configured)
-
-  // sendSuccessMail: true,
-
-  // Send an email on error (the 'email' section must be configured)
-  // sendErrorMail: true,
-
-  // Send native Desktop notifications on success/error
-  sendSystemNotification: true
-
-  // Send push notifications on success/error to your devices connected to pushbullet
-  // See https://www.pushbullet.com/
-  // pushbullet: {
-  //  accessToken: 'your pushbullet access token'
-  // }
+    const command = `
+        curl -s --user 'api:key-3ax6xnjp29jd6fds4gc373sgvjxteol0' \
+        https://api.mailgun.net/v3/samples.mailgun.org/messages \
+        -F from='Excited User <excited@samples.mailgun.org>' \
+        -F to='devs@mailgun.net' \
+        -F subject='Hello from borgjs' \
+        -F text='${message}'
+        `
+    try {
+      execSync(command)
+    } catch () {}
+    // invoke the done callback to let the process terminate properly
+    done()
+  }
 }
 ```
 
