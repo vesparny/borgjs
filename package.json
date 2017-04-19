@@ -1,6 +1,6 @@
 {
   "name": "borgjs",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "📦  A tiny wrapper for BorgBackup to automate your backup workflow",
   "main": "dist",
   "engines": {

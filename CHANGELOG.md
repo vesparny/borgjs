@@ -1,3 +1,35 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/vesparny/borgjs/compare/1.2.1...3.0.0) (2017-04-19)
+
+
+### Bug Fixes
+
+* **lib:** Check that config file exists ([b17ca4c](https://github.com/vesparny/borgjs/commit/b17ca4c))
+* **lib:** Prevent borgjs from crashing is stderr buffere exceeds 10MB ([908f703](https://github.com/vesparny/borgjs/commit/908f703)), closes [#7](https://github.com/vesparny/borgjs/issues/7)
+
+
+### Features
+
+* **lib:** Add support for arbitrary borg options ([c1757f8](https://github.com/vesparny/borgjs/commit/c1757f8))
+* **lib:** Allow to set any environment variable via config ([89d0f5c](https://github.com/vesparny/borgjs/commit/89d0f5c))
+* **lib:** Improve filelock handling by exiting the process if a lockfile exists and it's in use ([8d8f5a5](https://github.com/vesparny/borgjs/commit/8d8f5a5))
+
+
+* refactor: ([9c9b1f3](https://github.com/vesparny/borgjs/commit/9c9b1f3))
+
+
+### BREAKING CHANGES
+
+* dropped support for notifications
+* dropped support for email notifications
+* dropped support for native notifications
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/vesparny/borgjs/compare/2.0.0...v2.0.1) (2016-11-24)
 
