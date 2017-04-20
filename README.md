@@ -209,7 +209,7 @@ module.exports = {
         `
     try {
       execSync(command)
-    } catch () {}
+    } catch (e) {}
     // invoke the done callback to let the process terminate properly
     done()
   }
