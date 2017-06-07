@@ -11,8 +11,7 @@
   },
   "files": [
     "bin",
-    "lib",
-    "dist"
+    "lib"
   ],
   "scripts": {
     "precommit": "lint-staged",
