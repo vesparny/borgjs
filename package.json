@@ -17,7 +17,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "bump": "standard-version",
-    "test": "tape  -r babel-register test/**/*spec.js | tap-spec",
+    "test": "tape test/**/*spec.js | tap-spec",
     "lint": "standard",
     "release": "npm run lint  && npm run test && npm run bump && git push --follow-tags origin master && npm publish"
   },
