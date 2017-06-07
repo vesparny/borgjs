@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/vesparny/borgjs/compare/v3.0.0...v3.0.1) (2017-06-07)
+
+
+### Bug Fixes
+
+* remove babel ([ef1b608](https://github.com/vesparny/borgjs/commit/ef1b608))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/vesparny/borgjs/compare/1.2.1...3.0.0) (2017-04-19)
 
