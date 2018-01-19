@@ -2,10 +2,6 @@
 
 > A tiny wrapper for BorgBackup to automate your backup workflow
 
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/aF8QWaPs78PSySxWPHXXNThZ/vesparny/borgjs'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/aF8QWaPs78PSySxWPHXXNThZ/vesparny/borgjs.svg' />
-</a>
-
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/borgjs/discussion)
 [![npm](https://img.shields.io/npm/v/borgjs.svg)](https://www.npmjs.com/package/borgjs)
 [![Travis](https://img.shields.io/travis/vesparny/borgjs.svg)](https://travis-ci.org/vesparny/borgjs)
@@ -23,6 +19,7 @@
 * v1.0.8
 * v1.0.9
 * v1.0.10
+* v1.1.4
 
 borgjs is a nodejs command line tool for [BorgBackup](http://borgbackup.readthedocs.io/en/stable/).
 
